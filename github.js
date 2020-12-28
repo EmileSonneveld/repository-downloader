@@ -136,7 +136,7 @@ function getAllRepos(user, orgs, isOrg, callback) {
 
     function seq() {
         Logger.log("Page: " + (++page), "progress");
-        makeApiRequest(api + "?per_page=100&page=" + page, function (err, res) {
+        makeApiRequest(api + "?type=all&per_page=100&page=" + page, function (err, res) {
             if (err) { return callback(err); }
             allRepos = allRepos.concat(res);
             if (!res.length) {

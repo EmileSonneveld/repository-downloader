@@ -75,9 +75,10 @@ function downloadRepos(repos, callback) {
             }
 
             Logger.log("Repository: " + c.full_name, "progress");
-            repo.exec("clone " + c.links.clone[1].href + " " + path, function (err) {
+            repo.exec("clone " + c.links.clone[0].href + " " + path, function (err) {
 
                 if (err) {
+                    Logger.log(err);
                     notDownloaded.push(c);
                     return callback();
                 }
