@@ -186,7 +186,8 @@ function downloadRepos(repos, callback) {
             }
 
             Logger.log("Repository: " + c.full_name, "progress");
-            repo.exec("clone " + c.clone_url + " " + path, function (err) {
+            // Limiting the depth reduces UnrealEngine from 9Gb to 2Gb
+            repo.exec("clone " + c.clone_url + " " + path + " --depth=10", function (err) {
 
                 if (err) {
                     Logger.log(err);
